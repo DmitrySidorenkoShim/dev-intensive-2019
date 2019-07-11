@@ -102,6 +102,6 @@ object Utils {
         val fN = firstName?.get(0)
         val lN = lastName?.get(0)
 
-        return "${fN?.toUpperCase()}${if (lN == null) "" else lN.toUpperCase()}"
+        return "${fN?.toUpperCase()}${lN?.toUpperCase() ?: ""}"
     }
 }
