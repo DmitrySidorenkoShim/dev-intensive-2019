@@ -29,11 +29,10 @@ fun Date.add(value:Int, units: TimeUnits = TimeUnits.SECOND) : Date{
 }
 
 fun Date.humanizeDiff(date: Date = Date()): String {
-    val diff = (this.time - date.time)
+    val diff = abs(this.time - date.time)
 
     return when(diff) {
-        //in -1 .. 1 * SECOND -> "только что"
-        in -999999999 * SECOND .. 59 * SECOND -> "несколько секунд назад"// 1 .. 59
+        in 0 * SECOND .. 59 * SECOND -> "несколько секунд назад"
         in 59 * SECOND .. 61 * SECOND -> "минуту назад"
         in 61 * SECOND .. 59 * MINUTE -> "${abs(diff/ MINUTE)} ${humMinutes(diff)} назад"
         in 59 * MINUTE .. 61 * MINUTE -> "час назад"
@@ -42,26 +41,26 @@ fun Date.humanizeDiff(date: Date = Date()): String {
         in 23 * HOUR .. 25 * HOUR -> "день назад"
         in 25 * HOUR .. 365 * DAY -> "${abs(diff/ DAY)} дней назад"
         in 366 * DAY .. 999999999 * DAY -> "более года назад"
-        else -> "ошибка ${diff * SECOND} секунд"
+        else -> "ошибка ${diff/ SECOND} секунд"
 
     }
 }
 
 private fun humMinutes(diff: Long): String {
     return when(diff) {
-        1 * SECOND -> "минуту"
-        in 2 .. 4 * SECOND -> "минуты"
-        in 5 .. 59 * SECOND -> "минут"
-        else -> "минут"
+        in 1 * MINUTE .. 2 * MINUTE -> "минуту"
+        in 2 * MINUTE .. 5 * MINUTE -> "минуты"
+        in 5 * MINUTE .. 59 * MINUTE -> "минут"
+        else -> "ошибка ${diff/ MINUTE} минут"
     }
 }
 
 private fun humHours(diff: Long): String {
     return when(diff) {
-        1 * HOUR -> "час"
-        in 2 .. 4 * HOUR -> "часа"
-        in 5 .. 22 * HOUR -> "часов"
-        else -> "часов"
+        in 1 * HOUR .. 2 * HOUR -> "час"
+        in 2 * HOUR .. 5 * HOUR -> "часа"
+        in 5 * HOUR .. 22 * HOUR -> "часов"
+        else -> "ошибка ${diff/ HOUR} часов"
     }
 }
 
