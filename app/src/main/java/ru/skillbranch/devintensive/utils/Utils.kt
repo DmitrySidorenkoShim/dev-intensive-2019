@@ -3,8 +3,8 @@ package ru.skillbranch.devintensive.utils
 
 object Utils {
 
-    fun parceFullName(fullName:String?):Pair<String?, String?>{
-        if (fullName?.length == 0 || fullName == " ") return null to null
+    fun parseFullName(fullName:String?):Pair<String?, String?>{
+        if (fullName.isNullOrBlank()) return null to null
 
         val parts : List<String>? = fullName?.split(" ")
 
@@ -15,7 +15,7 @@ object Utils {
         return firstName to lastName
     }
 
-    fun transliteration(payload: String, devider: Char = ' '): String {
+    fun transliteration(payload: String, devider: String = " "): String {
 
         var nameInEng = ""
 
