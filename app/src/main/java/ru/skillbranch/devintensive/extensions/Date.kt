@@ -51,8 +51,8 @@ fun Date.humanizeDiff(date: Date = Date()): String {
 private fun humMinutes(diff: Long): String {
     return when(diff) {
         1 * MINUTE -> "минуту"
-        in 1 * MINUTE .. 5 * MINUTE -> "минуты"
-        in 5 * MINUTE .. 59 * MINUTE -> "минут"
+        in 1 * MINUTE .. 4 * MINUTE -> "минуты"
+        in 4 * MINUTE .. 59 * MINUTE -> "минут"
         else -> "ошибка ${diff/ MINUTE} минут"
     }
 }
@@ -60,8 +60,8 @@ private fun humMinutes(diff: Long): String {
 private fun humHours(diff: Long): String {
     return when(diff) {
         1 * HOUR -> "час"
-        in 1 * HOUR .. 5 * HOUR -> "часа"
-        in 5 * HOUR .. 22 * HOUR -> "часов"
+        in 1 * HOUR .. 4 * HOUR -> "часа"
+        in 4 * HOUR .. 22 * HOUR -> "часов"
         else -> "ошибка ${diff/ HOUR} часов"
     }
 }
@@ -69,8 +69,8 @@ private fun humHours(diff: Long): String {
 private fun humDays(diff: Long): String {
     return when(diff) {
         1 * DAY -> "день"
-        in 1 * DAY .. 5 * DAY -> "дня"
-        in 5 * DAY .. 366 * DAY -> "дней"
+        in 1 * DAY .. 4 * DAY -> "дня"
+        in 4 * DAY .. 366 * DAY -> "дней"
         else -> "ошибка ${diff/ DAY} дней"
     }
 }
