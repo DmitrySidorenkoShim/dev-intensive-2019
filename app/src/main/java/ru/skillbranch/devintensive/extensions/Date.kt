@@ -42,9 +42,9 @@ fun Date.humanizeDiff(date: Date = Date()): String {
         in -60 * MINUTE .. -120 * SECOND -> "через ${abs(diff/ MINUTE)} ${humMinutes(diff)}"
         in -120 * SECOND .. -89 * SECOND -> "через 2 ${humMinutes(diff)}"
         in -89 * SECOND .. -60 * SECOND -> "через минуту"
-        in -60 * SECOND .. 0 * SECOND -> "через несколько секунд"
+        //in -60 * SECOND .. 0 * SECOND -> "через несколько секунд"
 
-        in 0 * SECOND .. 60 * SECOND -> "несколько секунд назад"
+        in -60 * SECOND .. 60 * SECOND -> "несколько секунд назад"
         in 60 * SECOND .. 89 * SECOND -> "минуту назад"
         in 89 * SECOND .. 120 * SECOND -> "2 ${humMinutes(diff)} назад"
         in 120 * SECOND .. 60 * MINUTE -> "${abs(diff/ MINUTE)} ${humMinutes(diff)} назад"
