@@ -96,11 +96,8 @@ object Utils {
     }
 
     fun toInitials(firstName: String?, lastName: String?): String {
-        if (firstName?.length == 0 || firstName == "") return "null"
-        if (lastName?.length == 0 || lastName == "") return "null"
-
-        val fN = firstName?.get(0)
-        val lN = lastName?.get(0)
+        val fN = firstName?.trimStart()?.firstOrNull()
+        val lN = lastName?.trimStart()?.firstOrNull()
 
         return "${fN?.toUpperCase()}${lN?.toUpperCase() ?: ""}"
     }
