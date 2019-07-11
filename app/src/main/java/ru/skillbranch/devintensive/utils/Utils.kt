@@ -95,10 +95,14 @@ object Utils {
         return nameInEng
     }
 
-    fun toInitials(firstName: String?, lastName: String?): String {
-        val fN = firstName?.trimStart()?.firstOrNull()
+    fun toInitials(firstName: String?, lastName: String?): String? {
+        if (firstName.isNullOrBlank()) return null
+
+        val fN = firstName.trimStart().firstOrNull()
+        fN ?: return null
+
         val lN = lastName?.trimStart()?.firstOrNull()
 
-        return "${fN?.toUpperCase()}${lN?.toUpperCase() ?: ""}"
+        return "${fN.toUpperCase()}${lN?.toUpperCase() ?: ""}"
     }
 }

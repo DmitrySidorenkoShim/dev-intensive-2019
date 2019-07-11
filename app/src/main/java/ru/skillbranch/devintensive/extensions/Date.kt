@@ -40,7 +40,7 @@ fun Date.humanizeDiff(date: Date = Date()): String {
         in 23 * HOUR .. 25 * HOUR -> "день назад"
         in 25 * HOUR .. 365 * DAY -> "${abs(diff/ DAY)} дней назад"
         in 366 * DAY .. 99999 * DAY -> "более года назад"
-        else -> "из будущего"
+        else -> "несколько секунд назад"
 
     }
 }
